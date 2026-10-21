@@ -2,14 +2,23 @@ use std::io::Write;
 
 fn main() {
 
-    let lager = "Lager\n33 Export\nDesperados\nGolberg\nGulder\nHeineken\nStar\n\n";
-    let stout = "Stout\nLegend\nTurbo King\nWilliams\n\n";
-    let non_alcoholic = "Non-Alcoholic\nMaltina\nAmstel Malta\nMalta Gold\nFayrouz\n";
+    let header = "\nLager, Stout, Non-Alcoholic";
+    let row1 = "\n33 Export, Legend, Maltina";
+    let row2 = "\n Desperados, Turbo King, Amstel Malta";
+    let row3 = "\n Goldberg, Williams, Malta Gold";
+    let row4 = "\n Gulder, , Fayrouz";
+    let row5 = "\n Heineken, , ";
+    let row6 = "\n Star, , ";
 
-    let mut file = std::fs::File::create("breweries.txt").expect("create failed");
-    file.write_all(lager.as_bytes()).expect("write failed");
-    file.write_all(stout.as_bytes()).expect("write failed");
-    file.write_all(non_alcoholic.as_bytes()).expect("write failed");
 
-    println!("Data written to file");
+  let mut file = std::fs::File::create("breweries.csv").expect("write failed");
+  file.write_all(header.as_bytes()).expect("write failed");
+  file.write_all(row1.as_bytes()).expect("write failed");
+  file.write_all(row2.as_bytes()).expect("write failed");
+  file.write_all(row3.as_bytes()).expect("write failed");
+  file.write_all(row4.as_bytes()).expect("write failed");
+  file.write_all(row5.as_bytes()).expect("write failed");
+  file.write_all(row6.as_bytes()).expect("write failed");
+
+println!("breweries.csv created.");
 }
